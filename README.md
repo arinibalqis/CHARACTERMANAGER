@@ -1,122 +1,108 @@
+# Character Manager
 
-# TP10 - Character Manager Sprint #4
-## Theming, Properti Komponen & Analisis MVC
+Aplikasi Character Manager merupakan project Java Swing yang dikembangkan menggunakan konsep Object-Oriented Programming (OOP) dan Model-View-Controller (MVC).
 
-**Nama:** Arini Balqis  
-**NIM:** 253303621263  
-**Kelas:** 3 Pagi B  
-**Mata Kuliah:** Java Visual (SIH-6406)  
-**Universitas:** Universitas Prima Indonesia
+Project ini dikembangkan secara bertahap melalui beberapa sprint untuk mempelajari pengelolaan data karakter, tampilan antarmuka, dan penerapan layout pada Java Swing.
 
 ---
 
-## 1. Deskripsi Project
+# TP12 – Character Manager Sprint #5
 
-Pada TP10, aplikasi Character Manager dikembangkan
-dengan menambahkan sistem tema menggunakan class
-AppTheme.java.
+## Layout, UI Responsif & Analisis MVC
 
-Pengaturan warna, font, dan border dipisahkan dari
-MainWindow.java agar tampilan aplikasi lebih terorganisir
-dan mudah dikembangkan.
+### A. Deskripsi
 
-Aplikasi menggunakan Java Swing untuk menampilkan
-enam karakter dengan warna kartu berbeda berdasarkan
-role masing-masing karakter.
+Pada Sprint #5, aplikasi Character Manager dikembangkan menjadi versi 0.5 dengan menggunakan beberapa Layout Manager pada Java Swing.
 
-## 2. Fitur TP10
+Pengembangan ini berfokus pada penggunaan BorderLayout, GridLayout, BoxLayout, FlowLayout, dan JScrollPane agar tampilan aplikasi lebih terstruktur serta dapat menyesuaikan ukuran jendela.
 
-1. AppTheme.java sebagai pengaturan tema aplikasi.
-2. Minimal tiga warna utama.
-3. Minimal tiga jenis font.
-4. Pengaturan border melalui AppTheme.
-5. Method colorFor() untuk menentukan warna berdasarkan role.
-6. Kartu karakter memiliki warna sesuai role.
-7. Level minimal 5 ditampilkan dengan teks emas dan tebal.
-8. Menggunakan pack() untuk mengatur ukuran jendela.
-9. Menggunakan tooltip untuk informasi karakter.
-10. Border kartu berbeda berdasarkan role.
+### B. Fitur yang Dikembangkan
 
-## 3. Data Karakter
+1. Menggunakan BorderLayout sebagai layout utama.
+2. Header aplikasi berada di bagian NORTH.
+3. Daftar karakter ditampilkan pada bagian CENTER.
+4. Daftar karakter menggunakan JScrollPane.
+5. Legenda karakter ditampilkan pada bagian EAST.
+6. Status bar berada pada bagian SOUTH.
+7. Menambahkan panel statistik dengan GridLayout 2x2.
+8. Menambahkan minimal 8 karakter dengan level dan role berbeda.
+9. Menggunakan BoxLayout Y_AXIS untuk menyusun legenda.
+10. Menampilkan tulisan status di kiri dan versi v0.5 di kanan.
 
-| ID | Nama | Level | Role |
-|---|---|---:|---|
-| 1 | Arthur | 5 | WARRIOR |
-| 2 | Merlin | 10 | MAGE |
-| 3 | Robin | 3 | ARCHER |
-| 4 | Arjuna | 12 | ASSASSIN |
-| 5 | Leon | 15 | WARRIOR |
-| 6 | Freya | 7 | MAGE |
+### C. Wireframe Aplikasi
 
-## 4. Mini-Challenge
+```text
++------------------------------------------------------+
+|                  CHARACTER MANAGER                   |
+|          Manage your characters and roles            |
++------------------------------------------------------+
+| TOTAL CHARACTERS | AVERAGE LEVEL                      |
+| HIGHEST LEVEL    | TOTAL ROLES                         |
++--------------------------------------+---------------+
+|                                      |               |
+|  CHARACTER CARD     CHARACTER CARD  | CHARACTER     |
+|                                      | ROLES         |
+|  CHARACTER CARD     CHARACTER CARD  |               |
+|                                      | WARRIOR       |
+|  CHARACTER CARD     CHARACTER CARD  | MAGE          |
+|                                      | ARCHER        |
+|  CHARACTER CARD     CHARACTER CARD  | ASSASSIN      |
+|                                      |               |
++--------------------------------------+---------------+
+| Character Manager is running                  v0.5   |
++------------------------------------------------------+
+```
 
-Program memiliki konstanta:
+### D. Screenshot Aplikasi
 
-HIGHLIGHT_LEVEL_THRESHOLD = 5
 
-Karakter dengan level minimal 5 akan ditampilkan
-menggunakan teks berwarna emas dan font tebal.
 
-Konstanta digunakan agar batas level dapat diubah
-dengan mudah tanpa mencari angka yang tersebar
-di seluruh kode.
 
-## 5. Properti Tambahan
 
-### A. Tooltip
+Simpan screenshot dengan nama:
 
-Tooltip menampilkan informasi nama, level, role,
-dan HP ketika pengguna mengarahkan kursor ke kartu
-karakter.
+`tp12-small.png`
 
-Alasan: mempermudah pengguna mendapatkan informasi
-karakter tanpa memenuhi tampilan utama.
+![Screenshot scrollbar](screenshots/tp12.png)
 
-### B. Border Berdasarkan Role
+### E. Tabel Pengamatan Resize
 
-Setiap kartu memiliki border yang warnanya mengikuti
-role karakter.
+| Kondisi | Prediksi | Hasil Pengamatan |
+|---|---|---|
+| Ukuran awal | Semua komponen terlihat | Isi sesuai hasil pengujian |
+| Jendela dilebarkan | Ruang daftar karakter bertambah | Isi sesuai hasil pengujian |
+| Jendela diperkecil | Daftar karakter membutuhkan scrollbar | Isi sesuai hasil pengujian |
 
-Alasan: membantu membedakan kelompok karakter
-secara visual dan membuat tampilan lebih terorganisir.
+### F. Struktur Panel Bersarang
 
-## 6. Mengapa Warna Disimpan di AppTheme?
+Aplikasi menggunakan BorderLayout sebagai layout utama untuk membagi tampilan menjadi beberapa wilayah. Bagian NORTH berisi panel pembungkus yang terdiri dari header dan statistik. Bagian CENTER berisi JScrollPane yang membungkus panel daftar kartu karakter, sedangkan bagian EAST berisi legenda dengan BoxLayout. Bagian SOUTH digunakan sebagai status bar yang menampilkan informasi aplikasi dan versi v0.5.
 
-Warna disimpan di AppTheme karena warna merupakan
-bagian dari tampilan aplikasi, bukan data utama karakter.
+### G. Alasan Pemilihan Layout
 
-Dengan memisahkan pengaturan tema dari Character,
-kode menjadi lebih terorganisir dan mudah dipelihara.
+Panel statistik menggunakan GridLayout 2x2 karena membutuhkan susunan empat informasi dengan ukuran sel yang sama. GridLayout membuat setiap informasi memiliki pembagian ruang yang teratur.
 
-Jika warna ingin diubah, pengembang cukup mengubah
-AppTheme tanpa mengubah class Character.
+BoxLayout Y_AXIS dipilih untuk legenda karena setiap role disusun secara vertikal. GridLayout tidak dipilih untuk legenda karena pembagian sel yang sama kurang fleksibel untuk susunan daftar vertikal dengan jarak tambahan.
 
-Pemisahan ini juga menjaga prinsip MVC karena
-pengaturan tampilan ditempatkan pada layer View.
+Daftar kartu menggunakan GridLayout dengan dua kolom agar karakter dapat ditampilkan berdampingan dan mudah dibaca.
 
-## 7. Screenshot Program
-
-## 8. Google Docs - Analisis Properti & MVC
-
-Link Google Docs:
-
-[(https://docs.google.com/document/d/1XYF6heQZkCtV-_6eRr6Ozkwap8r4VWcENli-8Owduys/edit?usp=sharing)]
-
----
-
-## 9. Teknologi yang Digunakan
+### H. Teknologi yang Digunakan
 
 - Java
 - Java Swing
 - Object-Oriented Programming
-- Model-View-Controller (MVC)
-- Visual Studio Code
-- Git
-- GitHub
+- Model-View-Controller
+- BorderLayout
+- GridLayout
+- BoxLayout
+- FlowLayout
+- JScrollPane
 
----
+### I. Analisis Layout dan MVC
 
-## 10. Pengembang
+Dokumentasi analisis konseptual TP12:
 
-**Arini Balqis**
-Universitas Prima Indonesia
+[Masukkan link Google Docs analisis TP12 di sini]
+
+### J. Kesimpulan
+
+Melalui Sprint #5, aplikasi Character Manager dikembangkan dengan struktur layout yang lebih terorganisasi. Penggunaan beberapa Layout Manager membantu pengaturan komponen berdasarkan kebutuhan masing-masing panel. Penggunaan JScrollPane juga memungkinkan daftar karakter tetap dapat diakses ketika ruang tampilan terbatas. Pengujian resize dilakukan untuk mengevaluasi perilaku antarmuka pada berbagai ukuran jendela.
