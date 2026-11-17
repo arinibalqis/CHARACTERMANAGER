@@ -1,64 +1,123 @@
 
-# Character Manager — TP3 & TP5 (Java Visual SIH-6406)
+# TP8 - Character Manager Sprint #3
+## MainWindow, Data Dinamis & Analisis MVC
 
-## TP3 — Sprint #1
+**Nama:** Arini Balqis  
+**NIM:** 253303621263  
+**Kelas:** 3 Pagi B  
+**Mata Kuliah:** Java Visual (SIH-6406)  
+**Universitas:** Universitas Prima Indonesia
 
-Implementasi dasar Character Manager menggunakan Java OOP.
-Fitur meliputi class Character, enum CharacterType,
-constructor, encapsulation, mana, dan isAlive().
+---
 
-## TP5 — Sprint #2
+## 1. Deskripsi Project
 
-### Fitur yang Diimplementasikan
+Pada TP8, aplikasi Character Manager dikembangkan dari
+program berbasis console menjadi aplikasi Graphical User
+Interface (GUI) menggunakan Java Swing.
 
-1. equals() untuk membandingkan nama karakter.
-2. addCharacter() untuk menambahkan karakter.
-3. findByName() untuk mencari karakter.
-4. removeCharacter() untuk menghapus karakter.
-5. getTotalCharacters() untuk menghitung karakter.
-6. getAllCharacters() menggunakan defensive copy.
-7. getAverageLevel() untuk menghitung rata-rata level.
-8. findByType() untuk mencari berdasarkan tipe.
-9. findStrongest() untuk mencari karakter dengan attack tertinggi.
+Aplikasi ini menggunakan MainWindow untuk menampilkan
+data karakter secara dinamis melalui perulangan (loop).
+Selain itu, aplikasi dilengkapi dengan statistik jumlah
+karakter dan rata-rata level karakter.
 
-### Eksperimen Reference
+## 2. Fitur Implementasi
 
-Program membuktikan bahwa dua variabel dapat
-mengarah ke objek yang sama.
+1. MainWindow menggunakan JFrame.
+2. Menggunakan JLabel untuk menampilkan data karakter.
+3. Menampilkan data karakter secara dinamis menggunakan loop.
+4. Menambahkan minimal lima karakter.
+5. Menampilkan total jumlah karakter.
+6. Menghitung rata-rata level karakter.
+7. Menggunakan SwingUtilities.invokeLater().
+8. Menerapkan konsep Model-View-Controller (MVC).
 
-Hasil:
-- Level a: 8
-- a == b: true
+## 3. Data Karakter
 
-### Defensive Copy
+| ID | Nama | Level | Tipe |
+|---|---|---:|---|
+| 1 | Arthur | 5 | WARRIOR |
+| 2 | Merlin | 10 | MAGE |
+| 3 | Robin | 8 | ARCHER |
+| 4 | Arjuna | 12 | ASSASSIN |
+| 5 | Leon | 15 | WARRIOR |
 
-Eksperimen clear() pada ArrayList hasil getAllCharacters()
-tidak menghapus data asli dalam CharacterManager.
+## 4. Hasil Statistik
 
-### Fitur Analitik Mandiri
+- Total karakter: 5
+- Total level: 50
+- Rata-rata level: 10.00
 
-findStrongest() digunakan untuk mencari karakter
-dengan nilai attack paling tinggi.
+## 5. Struktur Folder
 
-### Screenshot Output TP5
+```text
+CHARACTERMANAGER/
+│
+├── src/
+│   └── com/
+│       └── unpri/
+│           └── charactermanager/
+│               │
+│               ├── model/
+│               │   ├── Character.java
+│               │   ├── CharacterType.java
+│               │   └── CharacterManager.java
+│               │
+│               ├── view/
+│               │   └── MainWindow.java
+│               │
+│               └── Main.java
+│
+├── screenshots/
+│   ├── TP8-sebelum.png
+│   └── TP8-sesudah.png
+│
+└── README.md
+```
 
-![Screenshot Output TP5](screenshots/TP5.png)
+## 6. Penjelasan Alur MVC
 
-### Google Docs — Analisis TP5
+Alur program dimulai dari Main.java yang membuat objek
+CharacterManager dan memasukkan data karakter.
 
-Nama: Arini Balqis
+CharacterManager bertugas menyimpan serta mengelola data
+karakter. Selanjutnya, MainWindow mengambil data dari
+CharacterManager dan menampilkannya ke dalam GUI
+menggunakan JLabel.
 
-NIM: 253303621263
+Dengan demikian, data dan tampilan program dipisahkan
+sehingga struktur kode lebih terorganisir dan mudah
+dikembangkan.
+
+## 7. Screenshot Program
+
+### A. Screenshot Sebelum Perubahan
+
+before tp8.png
+
+### B. Screenshot Sesudah Perubahan
+
+after tp8.png
+## 8. Google Docs - Analisis GUI & MVC
 
 Link Google Docs:
-https://docs.google.com/document/d/15CF2SieaXuLtPEREpwlK6MXO5XlRL1l3rD_S1a2Jryw/edit?usp=sharing 
 
-## Identitas
+(https://docs.google.com/document/d/1GW5QQ2DsBKiOWNkFsy8MwOIQVPapip_UMeQ-sIxsrjw/edit?usp=sharing)
 
-Nama: Arini Balqis
+---
 
-NIM: 253303621263
+## 9. Teknologi yang Digunakan
 
-Kelas: 3 Pagi B
+- Java
+- Java Swing
+- Object-Oriented Programming (OOP)
+- Model-View-Controller (MVC)
+- Visual Studio Code
+- Git dan GitHub
 
-Mata Kuliah: Java Visual (SIH-6406)
+---
+
+## 10. Pengembang
+
+**Arini Balqis**  
+Universitas Prima Indonesia

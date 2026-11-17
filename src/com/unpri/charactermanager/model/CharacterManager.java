@@ -11,9 +11,7 @@ public class CharacterManager {
         characters = new ArrayList<>();
     }
 
-    // Menambahkan karakter dan menolak nama duplikat
     public boolean addCharacter(Character character) {
-
         if (character == null) {
             return false;
         }
@@ -26,13 +24,7 @@ public class CharacterManager {
         return true;
     }
 
-    // Mencari karakter berdasarkan nama
     public Character findByName(String name) {
-
-        if (name == null) {
-            return null;
-        }
-
         for (Character character : characters) {
             if (character.getName().equalsIgnoreCase(name)) {
                 return character;
@@ -42,9 +34,7 @@ public class CharacterManager {
         return null;
     }
 
-    // Menghapus karakter berdasarkan nama
     public boolean removeCharacter(String name) {
-
         Character character = findByName(name);
 
         if (character == null) {
@@ -55,19 +45,15 @@ public class CharacterManager {
         return true;
     }
 
-    // Menghitung jumlah karakter
     public int getTotalCharacters() {
         return characters.size();
     }
 
-    // Mengembalikan salinan ArrayList
     public ArrayList<Character> getAllCharacters() {
         return new ArrayList<>(characters);
     }
 
-    // Menghitung rata-rata level
     public double getAverageLevel() {
-
         if (characters.isEmpty()) {
             return 0;
         }
@@ -81,9 +67,7 @@ public class CharacterManager {
         return (double) totalLevel / characters.size();
     }
 
-    // Mencari semua karakter berdasarkan jenis
     public ArrayList<Character> findByType(CharacterType type) {
-
         ArrayList<Character> result = new ArrayList<>();
 
         for (Character character : characters) {
@@ -96,11 +80,10 @@ public class CharacterManager {
     }
 
     /**
-     * Mencari karakter dengan attack tertinggi.
-     * Mengembalikan null jika belum ada karakter.
+     * Mencari karakter dengan level tertinggi.
+     * Mengembalikan null jika daftar karakter kosong.
      */
     public Character findStrongest() {
-
         if (characters.isEmpty()) {
             return null;
         }
@@ -108,7 +91,7 @@ public class CharacterManager {
         Character strongest = characters.get(0);
 
         for (Character character : characters) {
-            if (character.getAttack() > strongest.getAttack()) {
+            if (character.getLevel() > strongest.getLevel()) {
                 strongest = character;
             }
         }
