@@ -14,33 +14,63 @@ public class Main {
 
         SwingUtilities.invokeLater(() -> {
 
-            CharacterManager manager = new CharacterManager();
+            CharacterManager manager =
+                    new CharacterManager();
 
-            // Membuat lima karakter awal
+            // Karakter pertama
             manager.addCharacter(
-                    new Character(1, "Arthur", 5, CharacterType.WARRIOR)
+                    new Character(
+                            1, "Arthur", 5,
+                            CharacterType.WARRIOR
+                    )
             );
 
+            // Karakter kedua
             manager.addCharacter(
-                    new Character(2, "Merlin", 10, CharacterType.MAGE)
+                    new Character(
+                            2, "Merlin", 10,
+                            CharacterType.MAGE
+                    )
             );
 
+            // Karakter ketiga
             manager.addCharacter(
-                    new Character(3, "Robin", 8, CharacterType.ARCHER)
+                    new Character(
+                            3, "Robin", 3,
+                            CharacterType.ARCHER
+                    )
             );
 
+            // Karakter keempat
             manager.addCharacter(
-                    new Character(4, "Arjuna", 12, CharacterType.ASSASSIN)
+                    new Character(
+                            4, "Arjuna", 12,
+                            CharacterType.ASSASSIN
+                    )
             );
 
+            // Karakter kelima
             manager.addCharacter(
-                    new Character(5, "Lancelot", 15, CharacterType.WARRIOR)
+                    new Character(
+                            5, "Leon", 15,
+                            CharacterType.WARRIOR
+                    )
             );
 
-            // Menampilkan GUI
-            MainWindow window = new MainWindow(manager);
+            // Karakter keenam
+            manager.addCharacter(
+                    new Character(
+                            6, "Freya", 7,
+                            CharacterType.MAGE
+                    )
+            );
+
+            // Membuka aplikasi GUI
+            MainWindow window =
+                    new MainWindow(manager);
 
             window.setVisible(true);
+
         });
     }
 }

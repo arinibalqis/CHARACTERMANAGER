@@ -1,6 +1,6 @@
 
-# TP8 - Character Manager Sprint #3
-## MainWindow, Data Dinamis & Analisis MVC
+# TP10 - Character Manager Sprint #4
+## Theming, Properti Komponen & Analisis MVC
 
 **Nama:** Arini Balqis  
 **NIM:** 253303621263  
@@ -12,97 +12,95 @@
 
 ## 1. Deskripsi Project
 
-Pada TP8, aplikasi Character Manager dikembangkan dari
-program berbasis console menjadi aplikasi Graphical User
-Interface (GUI) menggunakan Java Swing.
+Pada TP10, aplikasi Character Manager dikembangkan
+dengan menambahkan sistem tema menggunakan class
+AppTheme.java.
 
-Aplikasi ini menggunakan MainWindow untuk menampilkan
-data karakter secara dinamis melalui perulangan (loop).
-Selain itu, aplikasi dilengkapi dengan statistik jumlah
-karakter dan rata-rata level karakter.
+Pengaturan warna, font, dan border dipisahkan dari
+MainWindow.java agar tampilan aplikasi lebih terorganisir
+dan mudah dikembangkan.
 
-## 2. Fitur Implementasi
+Aplikasi menggunakan Java Swing untuk menampilkan
+enam karakter dengan warna kartu berbeda berdasarkan
+role masing-masing karakter.
 
-1. MainWindow menggunakan JFrame.
-2. Menggunakan JLabel untuk menampilkan data karakter.
-3. Menampilkan data karakter secara dinamis menggunakan loop.
-4. Menambahkan minimal lima karakter.
-5. Menampilkan total jumlah karakter.
-6. Menghitung rata-rata level karakter.
-7. Menggunakan SwingUtilities.invokeLater().
-8. Menerapkan konsep Model-View-Controller (MVC).
+## 2. Fitur TP10
+
+1. AppTheme.java sebagai pengaturan tema aplikasi.
+2. Minimal tiga warna utama.
+3. Minimal tiga jenis font.
+4. Pengaturan border melalui AppTheme.
+5. Method colorFor() untuk menentukan warna berdasarkan role.
+6. Kartu karakter memiliki warna sesuai role.
+7. Level minimal 5 ditampilkan dengan teks emas dan tebal.
+8. Menggunakan pack() untuk mengatur ukuran jendela.
+9. Menggunakan tooltip untuk informasi karakter.
+10. Border kartu berbeda berdasarkan role.
 
 ## 3. Data Karakter
 
-| ID | Nama | Level | Tipe |
+| ID | Nama | Level | Role |
 |---|---|---:|---|
 | 1 | Arthur | 5 | WARRIOR |
 | 2 | Merlin | 10 | MAGE |
-| 3 | Robin | 8 | ARCHER |
+| 3 | Robin | 3 | ARCHER |
 | 4 | Arjuna | 12 | ASSASSIN |
 | 5 | Leon | 15 | WARRIOR |
+| 6 | Freya | 7 | MAGE |
 
-## 4. Hasil Statistik
+## 4. Mini-Challenge
 
-- Total karakter: 5
-- Total level: 50
-- Rata-rata level: 10.00
+Program memiliki konstanta:
 
-## 5. Struktur Folder
+HIGHLIGHT_LEVEL_THRESHOLD = 5
 
-```text
-CHARACTERMANAGER/
-│
-├── src/
-│   └── com/
-│       └── unpri/
-│           └── charactermanager/
-│               │
-│               ├── model/
-│               │   ├── Character.java
-│               │   ├── CharacterType.java
-│               │   └── CharacterManager.java
-│               │
-│               ├── view/
-│               │   └── MainWindow.java
-│               │
-│               └── Main.java
-│
-├── screenshots/
-│   ├── TP8-sebelum.png
-│   └── TP8-sesudah.png
-│
-└── README.md
-```
+Karakter dengan level minimal 5 akan ditampilkan
+menggunakan teks berwarna emas dan font tebal.
 
-## 6. Penjelasan Alur MVC
+Konstanta digunakan agar batas level dapat diubah
+dengan mudah tanpa mencari angka yang tersebar
+di seluruh kode.
 
-Alur program dimulai dari Main.java yang membuat objek
-CharacterManager dan memasukkan data karakter.
+## 5. Properti Tambahan
 
-CharacterManager bertugas menyimpan serta mengelola data
-karakter. Selanjutnya, MainWindow mengambil data dari
-CharacterManager dan menampilkannya ke dalam GUI
-menggunakan JLabel.
+### A. Tooltip
 
-Dengan demikian, data dan tampilan program dipisahkan
-sehingga struktur kode lebih terorganisir dan mudah
-dikembangkan.
+Tooltip menampilkan informasi nama, level, role,
+dan HP ketika pengguna mengarahkan kursor ke kartu
+karakter.
+
+Alasan: mempermudah pengguna mendapatkan informasi
+karakter tanpa memenuhi tampilan utama.
+
+### B. Border Berdasarkan Role
+
+Setiap kartu memiliki border yang warnanya mengikuti
+role karakter.
+
+Alasan: membantu membedakan kelompok karakter
+secara visual dan membuat tampilan lebih terorganisir.
+
+## 6. Mengapa Warna Disimpan di AppTheme?
+
+Warna disimpan di AppTheme karena warna merupakan
+bagian dari tampilan aplikasi, bukan data utama karakter.
+
+Dengan memisahkan pengaturan tema dari Character,
+kode menjadi lebih terorganisir dan mudah dipelihara.
+
+Jika warna ingin diubah, pengembang cukup mengubah
+AppTheme tanpa mengubah class Character.
+
+Pemisahan ini juga menjaga prinsip MVC karena
+pengaturan tampilan ditempatkan pada layer View.
 
 ## 7. Screenshot Program
 
-### A. Screenshot Sebelum Perubahan
-
-before tp8.png
-
-### B. Screenshot Sesudah Perubahan
-
-after tp8.png
-## 8. Google Docs - Analisis GUI & MVC
+## 8. Google Docs - Analisis Properti & MVC
 
 Link Google Docs:
 
-(https://docs.google.com/document/d/1GW5QQ2DsBKiOWNkFsy8MwOIQVPapip_UMeQ-sIxsrjw/edit?usp=sharing)
+[(https://docs.google.com/document/d/1XYF6heQZkCtV-_6eRr6Ozkwap8r4VWcENli-8Owduys/edit?usp=sharing)]
 
 ---
 
@@ -110,14 +108,15 @@ Link Google Docs:
 
 - Java
 - Java Swing
-- Object-Oriented Programming (OOP)
+- Object-Oriented Programming
 - Model-View-Controller (MVC)
 - Visual Studio Code
-- Git dan GitHub
+- Git
+- GitHub
 
 ---
 
 ## 10. Pengembang
 
-**Arini Balqis**  
+**Arini Balqis**
 Universitas Prima Indonesia
