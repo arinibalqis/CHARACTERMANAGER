@@ -1,58 +1,60 @@
 
-# Character Manager — TP3 (Java Visual SIH-6406)
+# Character Manager — TP3 & TP5 (Java Visual SIH-6406)
 
-## Deskripsi
-Character Manager merupakan project Java yang dibuat untuk memenuhi
-tugas TP3 mata kuliah Java Visual.
+## TP3 — Sprint #1
 
-Project ini menerapkan konsep Object-Oriented Programming (OOP),
-meliputi class, object, constructor, encapsulation, enum, getter,
-setter, serta method. Project ini juga dikembangkan dengan fitur
-tambahan berupa mana dan pengecekan kondisi karakter menggunakan
-method isAlive().
+Implementasi dasar Character Manager menggunakan Java OOP.
+Fitur meliputi class Character, enum CharacterType,
+constructor, encapsulation, mana, dan isAlive().
 
-## Fitur
-1. Membuat objek karakter.
-2. Menggunakan dua constructor.
-3. Menggunakan enum CharacterType.
-4. Mengatur level, HP, dan attack.
-5. Menambahkan atribut mana.
-6. Validasi mana agar tidak bernilai negatif.
-7. Mengecek kondisi karakter menggunakan isAlive().
-8. Menampilkan data karakter menggunakan toString().
+## TP5 — Sprint #2
 
-## Screenshot Output
+### Fitur yang Diimplementasikan
 
-![Character Manager Output](screenshots/output.png)
+1. equals() untuk membandingkan nama karakter.
+2. addCharacter() untuk menambahkan karakter.
+3. findByName() untuk mencari karakter.
+4. removeCharacter() untuk menghapus karakter.
+5. getTotalCharacters() untuk menghitung karakter.
+6. getAllCharacters() menggunakan defensive copy.
+7. getAverageLevel() untuk menghitung rata-rata level.
+8. findByType() untuk mencari berdasarkan tipe.
+9. findStrongest() untuk mencari karakter dengan attack tertinggi.
 
-## Struktur Folder
+### Eksperimen Reference
 
-```text
-javavisual-tp03-253303621263/
-│
-├── CharacterManager/
-│   └── src/
-│       └── com/
-│           └── unpri/
-│               └── charactermanager/
-│                   ├── model/
-│                   │   ├── Character.java
-│                   │   └── CharacterType.java
-│                   └── Main.java
-│
-├── screenshots/
-│   └── output.png
-│
-└── README.md
-```
+Program membuktikan bahwa dua variabel dapat
+mengarah ke objek yang sama.
 
-## Teknologi
-- Java Development Kit (JDK) 17
-- Visual Studio Code
-- Object-Oriented Programming
-- Git dan GitHub
+Hasil:
+- Level a: 8
+- a == b: true
 
-## Identitas Mahasiswa
+### Defensive Copy
+
+Eksperimen clear() pada ArrayList hasil getAllCharacters()
+tidak menghapus data asli dalam CharacterManager.
+
+### Fitur Analitik Mandiri
+
+findStrongest() digunakan untuk mencari karakter
+dengan nilai attack paling tinggi.
+
+### Screenshot Output TP5
+
+![Screenshot Output TP5](screenshots/TP5.png)
+
+### Google Docs — Analisis TP5
+
+Nama: Arini Balqis
+
+NIM: 253303621263
+
+Link Google Docs:
+https://docs.google.com/document/d/15CF2SieaXuLtPEREpwlK6MXO5XlRL1l3rD_S1a2Jryw/edit?usp=sharing 
+
+## Identitas
+
 Nama: Arini Balqis
 
 NIM: 253303621263
@@ -60,16 +62,3 @@ NIM: 253303621263
 Kelas: 3 Pagi B
 
 Mata Kuliah: Java Visual (SIH-6406)
-
-## Dokumentasi Analisis
-
-Google Docs:
-[TEMPELKAN LINK GOOGLE DOCS DI SINI]
-
-## Cara Menjalankan
-1. Buka project menggunakan Visual Studio Code.
-2. Pastikan JDK 17 sudah terpasang.
-3. Buka terminal.
-4. Masuk ke folder CharacterManager.
-5. Compile file Java.
-6. Jalankan Main.java.

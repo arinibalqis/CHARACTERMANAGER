@@ -1,6 +1,8 @@
 
 package com.unpri.charactermanager.model;
 
+import java.util.Objects;
+
 public class Character {
 
     private int id;
@@ -11,18 +13,28 @@ public class Character {
     private int attack;
     private int mana;
 
+    private static int totalCharacterCreated = 0;
+
     // Constructor pertama
-    public Character(String name, int level, CharacterType type) {
-        this(0, name, level, type);
+    public Character(String name, CharacterType type, int level) {
+        this(0, name, type, level);
     }
 
     // Constructor kedua
-    public Character(int id, String name, int level, CharacterType type) {
+    public Character(int id, String name, CharacterType type, int level) {
         this.id = id;
         this.name = name;
         this.type = type;
+        this.level = level;
         this.mana = 0;
-        setLevel(level);
+
+        calculateStats();
+        totalCharacterCreated++;
+    }
+
+    private void calculateStats() {
+        this.hitPoints = 100 + (level * 10);
+        this.attack = 10 + (level * 2);
     }
 
     public int getId() {
@@ -38,6 +50,12 @@ public class Character {
     }
 
     public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException(
+                "Nama tidak boleh kosong"
+            );
+        }
+
         this.name = name;
     }
 
@@ -47,12 +65,13 @@ public class Character {
 
     public void setLevel(int level) {
         if (level < 1) {
-            throw new IllegalArgumentException("Level tidak boleh kurang dari 1");
+            throw new IllegalArgumentException(
+                "Level minimal 1"
+            );
         }
 
         this.level = level;
-        this.hitPoints = calculateBaseHP();
-        this.attack = calculateBaseAttack();
+        calculateStats();
     }
 
     public CharacterType getType() {
@@ -61,24 +80,14 @@ public class Character {
 
     public void setType(CharacterType type) {
         this.type = type;
-        this.hitPoints = calculateBaseHP();
-        this.attack = calculateBaseAttack();
     }
 
     public int getHitPoints() {
         return hitPoints;
     }
 
-    public void setHitPoints(int hitPoints) {
-        this.hitPoints = hitPoints;
-    }
-
     public int getAttack() {
         return attack;
-    }
-
-    public void setAttack(int attack) {
-        this.attack = attack;
     }
 
     public int getMana() {
@@ -87,56 +96,50 @@ public class Character {
 
     public void setMana(int mana) {
         if (mana < 0) {
-            throw new IllegalArgumentException("Mana tidak boleh negatif");
+            throw new IllegalArgumentException(
+                "Mana tidak boleh negatif"
+            );
         }
 
         this.mana = mana;
     }
 
-    public int calculateBaseHP() {
-        switch (type) {
-            case WARRIOR:
-                return 150 + (level * 20);
-
-            case MAGE:
-                return 90 + (level * 10);
-
-            case ARCHER:
-                return 110 + (level * 15);
-
-            case ASSASSIN:
-                return 100 + (level * 12);
-
-            default:
-                return 100;
-        }
-    }
-
-    public int calculateBaseAttack() {
-        switch (type) {
-            case WARRIOR:
-                return 20 + (level * 5);
-
-            case MAGE:
-                return 35 + (level * 7);
-
-            case ARCHER:
-                return 25 + (level * 6);
-
-            case ASSASSIN:
-                return 30 + (level * 8);
-
-            default:
-                return 10;
-        }
+    public void levelUp() {
+        setLevel(level + 1);
     }
 
     public boolean isAlive() {
         return hitPoints > 0;
     }
 
-    public void levelUp() {
-        setLevel(level + 1);
+    public static int getTotalCharacterCreated() {
+        return totalCharacterCreated;
+    }
+
+    // Membandingkan karakter berdasarkan nama
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof Character)) {
+            return false;
+        }
+
+        Character other = (Character) obj;
+
+        return Objects.equals(
+            name == null ? null : name.toLowerCase(),
+            other.name == null ? null : other.name.toLowerCase()
+        );
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+            name == null ? null : name.toLowerCase()
+        );
     }
 
     @Override
