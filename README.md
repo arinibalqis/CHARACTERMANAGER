@@ -1,75 +1,122 @@
 
-# Character Manager — TP3 (Java Visual SIH-6406)
+# TP10 - Character Manager Sprint #4
+## Theming, Properti Komponen & Analisis MVC
 
-## Deskripsi
-Character Manager merupakan project Java yang dibuat untuk memenuhi
-tugas TP3 mata kuliah Java Visual.
+**Nama:** Arini Balqis  
+**NIM:** 253303621263  
+**Kelas:** 3 Pagi B  
+**Mata Kuliah:** Java Visual (SIH-6406)  
+**Universitas:** Universitas Prima Indonesia
 
-Project ini menerapkan konsep Object-Oriented Programming (OOP),
-meliputi class, object, constructor, encapsulation, enum, getter,
-setter, serta method. Project ini juga dikembangkan dengan fitur
-tambahan berupa mana dan pengecekan kondisi karakter menggunakan
-method isAlive().
+---
 
-## Fitur
-1. Membuat objek karakter.
-2. Menggunakan dua constructor.
-3. Menggunakan enum CharacterType.
-4. Mengatur level, HP, dan attack.
-5. Menambahkan atribut mana.
-6. Validasi mana agar tidak bernilai negatif.
-7. Mengecek kondisi karakter menggunakan isAlive().
-8. Menampilkan data karakter menggunakan toString().
+## 1. Deskripsi Project
 
-## Screenshot Output
+Pada TP10, aplikasi Character Manager dikembangkan
+dengan menambahkan sistem tema menggunakan class
+AppTheme.java.
 
-![Character Manager Output](screenshots/output.png)
+Pengaturan warna, font, dan border dipisahkan dari
+MainWindow.java agar tampilan aplikasi lebih terorganisir
+dan mudah dikembangkan.
 
-## Struktur Folder
+Aplikasi menggunakan Java Swing untuk menampilkan
+enam karakter dengan warna kartu berbeda berdasarkan
+role masing-masing karakter.
 
-```text
-javavisual-tp03-253303621263/
-│
-├── CharacterManager/
-│   └── src/
-│       └── com/
-│           └── unpri/
-│               └── charactermanager/
-│                   ├── model/
-│                   │   ├── Character.java
-│                   │   └── CharacterType.java
-│                   └── Main.java
-│
-├── screenshots/
-│   └── output.png
-│
-└── README.md
-```
+## 2. Fitur TP10
 
-## Teknologi
-- Java Development Kit (JDK) 17
-- Visual Studio Code
+1. AppTheme.java sebagai pengaturan tema aplikasi.
+2. Minimal tiga warna utama.
+3. Minimal tiga jenis font.
+4. Pengaturan border melalui AppTheme.
+5. Method colorFor() untuk menentukan warna berdasarkan role.
+6. Kartu karakter memiliki warna sesuai role.
+7. Level minimal 5 ditampilkan dengan teks emas dan tebal.
+8. Menggunakan pack() untuk mengatur ukuran jendela.
+9. Menggunakan tooltip untuk informasi karakter.
+10. Border kartu berbeda berdasarkan role.
+
+## 3. Data Karakter
+
+| ID | Nama | Level | Role |
+|---|---|---:|---|
+| 1 | Arthur | 5 | WARRIOR |
+| 2 | Merlin | 10 | MAGE |
+| 3 | Robin | 3 | ARCHER |
+| 4 | Arjuna | 12 | ASSASSIN |
+| 5 | Leon | 15 | WARRIOR |
+| 6 | Freya | 7 | MAGE |
+
+## 4. Mini-Challenge
+
+Program memiliki konstanta:
+
+HIGHLIGHT_LEVEL_THRESHOLD = 5
+
+Karakter dengan level minimal 5 akan ditampilkan
+menggunakan teks berwarna emas dan font tebal.
+
+Konstanta digunakan agar batas level dapat diubah
+dengan mudah tanpa mencari angka yang tersebar
+di seluruh kode.
+
+## 5. Properti Tambahan
+
+### A. Tooltip
+
+Tooltip menampilkan informasi nama, level, role,
+dan HP ketika pengguna mengarahkan kursor ke kartu
+karakter.
+
+Alasan: mempermudah pengguna mendapatkan informasi
+karakter tanpa memenuhi tampilan utama.
+
+### B. Border Berdasarkan Role
+
+Setiap kartu memiliki border yang warnanya mengikuti
+role karakter.
+
+Alasan: membantu membedakan kelompok karakter
+secara visual dan membuat tampilan lebih terorganisir.
+
+## 6. Mengapa Warna Disimpan di AppTheme?
+
+Warna disimpan di AppTheme karena warna merupakan
+bagian dari tampilan aplikasi, bukan data utama karakter.
+
+Dengan memisahkan pengaturan tema dari Character,
+kode menjadi lebih terorganisir dan mudah dipelihara.
+
+Jika warna ingin diubah, pengembang cukup mengubah
+AppTheme tanpa mengubah class Character.
+
+Pemisahan ini juga menjaga prinsip MVC karena
+pengaturan tampilan ditempatkan pada layer View.
+
+## 7. Screenshot Program
+
+## 8. Google Docs - Analisis Properti & MVC
+
+Link Google Docs:
+
+[(https://docs.google.com/document/d/1XYF6heQZkCtV-_6eRr6Ozkwap8r4VWcENli-8Owduys/edit?usp=sharing)]
+
+---
+
+## 9. Teknologi yang Digunakan
+
+- Java
+- Java Swing
 - Object-Oriented Programming
-- Git dan GitHub
+- Model-View-Controller (MVC)
+- Visual Studio Code
+- Git
+- GitHub
 
-## Identitas Mahasiswa
-Nama: Arini Balqis
+---
 
-NIM: 253303621263
+## 10. Pengembang
 
-Kelas: 3 Pagi B
-
-Mata Kuliah: Java Visual (SIH-6406)
-
-## Dokumentasi Analisis
-
-Google Docs:
-[TEMPELKAN LINK GOOGLE DOCS DI SINI]
-
-## Cara Menjalankan
-1. Buka project menggunakan Visual Studio Code.
-2. Pastikan JDK 17 sudah terpasang.
-3. Buka terminal.
-4. Masuk ke folder CharacterManager.
-5. Compile file Java.
-6. Jalankan Main.java.
+**Arini Balqis**
+Universitas Prima Indonesia
