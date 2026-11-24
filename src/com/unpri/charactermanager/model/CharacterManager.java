@@ -1,32 +1,60 @@
-
 package com.unpri.charactermanager.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class CharacterManager {
 
-    private ArrayList<Character> characters;
+    private final List<Character> characters = new ArrayList<>();
 
-    public CharacterManager() {
-        characters = new ArrayList<>();
-    }
+    public void addCharacter(Character character) {
 
-    public boolean addCharacter(Character character) {
         if (character == null) {
-            return false;
+            throw new IllegalArgumentException(
+                "Karakter tidak boleh null."
+            );
         }
 
-        if (findByName(character.getName()) != null) {
-            return false;
+        if (isNameTaken(character.getName())) {
+            throw new IllegalArgumentException(
+                "Nama karakter \"" +
+                character.getName() +
+                "\" sudah digunakan."
+            );
         }
 
         characters.add(character);
-        return true;
+    }
+
+    public boolean isNameTaken(String name) {
+
+        if (name == null || name.trim().isEmpty()) {
+            return false;
+        }
+
+        String target = name.trim();
+
+        for (Character character : characters) {
+
+            if (character.getName().equalsIgnoreCase(target)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public Character findByName(String name) {
+
+        if (name == null) {
+            return null;
+        }
+
         for (Character character : characters) {
-            if (character.getName().equalsIgnoreCase(name)) {
+
+            if (character.getName()
+                    .equalsIgnoreCase(name.trim())) {
                 return character;
             }
         }
@@ -35,67 +63,49 @@ public class CharacterManager {
     }
 
     public boolean removeCharacter(String name) {
-        Character character = findByName(name);
 
-        if (character == null) {
-            return false;
-        }
+        Character found = findByName(name);
 
-        characters.remove(character);
-        return true;
+        return found != null && characters.remove(found);
     }
 
     public int getTotalCharacters() {
         return characters.size();
     }
 
-    public ArrayList<Character> getAllCharacters() {
-        return new ArrayList<>(characters);
-    }
-
     public double getAverageLevel() {
+
         if (characters.isEmpty()) {
-            return 0;
+            return 0.0;
         }
 
-        int totalLevel = 0;
+        int total = 0;
 
         for (Character character : characters) {
-            totalLevel += character.getLevel();
+            total += character.getLevel();
         }
 
-        return (double) totalLevel / characters.size();
+        return (double) total / characters.size();
     }
 
-    public ArrayList<Character> findByType(CharacterType type) {
-        ArrayList<Character> result = new ArrayList<>();
-
-        for (Character character : characters) {
-            if (character.getType() == type) {
-                result.add(character);
-            }
-        }
-
-        return result;
-    }
-
-    /**
-     * Mencari karakter dengan level tertinggi.
-     * Mengembalikan null jika daftar karakter kosong.
-     */
     public Character findStrongest() {
-        if (characters.isEmpty()) {
-            return null;
-        }
 
-        Character strongest = characters.get(0);
+        Character strongest = null;
 
         for (Character character : characters) {
-            if (character.getLevel() > strongest.getLevel()) {
+
+            if (strongest == null ||
+                character.getAttack() > strongest.getAttack()) {
                 strongest = character;
             }
         }
 
         return strongest;
+    }
+
+    public List<Character> getAllCharacters() {
+        return Collections.unmodifiableList(
+            new ArrayList<>(characters)
+        );
     }
 }
